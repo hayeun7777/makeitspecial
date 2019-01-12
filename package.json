@@ -1,7 +1,8 @@
 {
   "name": "auth-boiler",
   "version": "1.0.0",
-  "description": "",
+  "description": "Birthday Clowns",
+  "repository":"",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

@@ -33,7 +33,12 @@ router.post('/signup', function(req, res){
 			if(wasCreated){
 				console.log('was created');
 				req.flash('success', 'Yay! Good job! You signed up!');
-				res.redirect('/profile');
+				passport.authenticate('local', {
+					successFlash: 'Welcome Home',
+					successRedirect: '/profile',
+					failureFlash: 'Invalid Credentials',
+					failureRedirect: '/auth/login'
+				})(req, res, next);
 			}
 			else{
 			//	console.log('was found'); //good habit to console.log to see if things work
