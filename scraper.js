@@ -4,6 +4,16 @@ var fs = require('fs');
 var cheerio = require('cheerio');
 var app = express();
 
+
+app.get('/', function(req, res){
+	showGift(req.body)
+	.then(function(){
+		res.render('/product/show', {items: items});
+	})
+})
+
+
+
 function showGift(){
 	request('https://www.uncommongoods.com/gifts/birthday-gifts/birthday-gifts', function(error, response, body){
 		var $ = cheerio.load(body);

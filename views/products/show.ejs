@@ -1,10 +1,10 @@
 <h1>Gift Ideas for your Friend1</h1>
 
-<% items.forEach(function(item){ %>
-	<div class="">
-		<h3><%=item.item%></h3>
-		<img src="<%=gift.photo%>">
-		<h4>price: $<%=item.price%></h4>
-		<p>product details:<%=item.description%></p>
-	</div>
+<% gifts.forEach(function(gift){ %>
+<div class="">
+    <h3><%=gift.item%></h3>
+    <img src="http://www.uncommongoods.com<%=gift.photo%>" />
+    <h4>price: $<%=gift.price%></h4>
+    <a href="http://www.uncommongoods.com<%=gift.link%>"><h4>for more details</h4></a>
+</div>
 <% }) %>
