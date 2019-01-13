@@ -8,6 +8,23 @@ var layouts = require('express-ejs-layouts');
 var parser = require('body-parser');
 var passport = require('./config/passportConfig');
 var session = require('express-session');
+// var request = require('request');
+// var rp = require('request-promise');
+// var cheerio = require('cheerio');
+
+// request('https://www.uncommongoods.com/product/', function(error, response, body){
+// 	var $ = cheerio.load(body);
+// 	var gifts = $('.info-window-content').map(function(index, element){
+// 		return {
+// 			item: $(element).find('h1').text(),
+// 			price: $(element).find('p').attr('span'),
+// 			photo: $(element).find('img').attr('src'),
+// 			description: $(element).find('p').text()
+// 		};
+// }).get();
+
+// });
+
 
 // Declare express app
 var app = express();
@@ -52,5 +69,7 @@ app.get('/profile', function(req, res){
 //include any controllers we need
 app.use('/auth', require('./controllers/auth.js'));
 app.use('/profile', require('./controllers/profiles'));
+app.use('/product', require('./controllers/products'));
+
 // Listen on a port
 app.listen(3000);

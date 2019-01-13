@@ -1,22 +1,50 @@
+body{
+	font-family: 'Exo 2', sans-serif;
+	display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    height: 800px;
+}
+
+main{
+	flex: 1 0 auto;
+}
+
 nav{
-	background-color: #ddd !important;
+	background-color: #E1B8E8 !important;
 	min-height: 50px;
 	padding: 10px 0 0 15px;
 }
 
+
 nav a{
 	text-decoration: none;
-	font-weight: bold;
 	font-size: 28px;
+	color: white;
+	font-family: 'Exo 2', sans-serif;
 }
 
 nav a:hover {
-	color: chartreuse;
+	color: #FFE2A7;
 
+}
+
+footer {
+	background-color: #E1B8E8 !important;
+}
+
+.container{
+	width: 100%;
+	margin: 0 auto;
 }
 
 .profile{
 	max-width: 250px;
 	height: auto;
-	
+}
+
+.homediv{
+	background-color: #ECE7F0;
+	font-family: 'Patrick Hand', cursive;
+	padding: 20px;
 }

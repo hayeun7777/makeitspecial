@@ -4,31 +4,58 @@
 	<title>Make It Special</title>
 	<link rel="stylesheet" type="text/css" href="/style.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Exo+2|Patrick+Hand" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-	<nav>
-		<div class="nav-wrapper">
-			<a href="/" class="brand-logo"><i class="material-icons">cloud</i> Kelly </a>
-			<ul class="right">
-				<% if(!user) { %>
-					<li><a href="/auth/login">Log in</a></li>
-					<li><a href="/auth/signup">Sign Up</a></li>
-				<% } else { %>
-					<% if(user.admin){%>
-						<li><a href="/profile/admins">Admin Page</a></li>
-					<%}%>
-						<li><a href="/profile">Profile</a></li>
-						<li>Hello, <%=user.firstname%>!</li>
-						<li><a href="/auth/logout">Logout</a></li>
-				<% } %>
-			</ul>
+	<header>
+		<nav>
+			<div class="nav-wrapper">
+				<a href="/" class="brand-logo"><i class="material-icons">card_giftcard</i> Make It Special </a>
+				<ul class="right">
+					<% if(!user) { %>
+						<li><a href="/friend">People</a></li>
+						<li><a href="/product">Gift</a></li>
+						<li><a href="/auth/login">Log in</a></li>
+						<li><a href="/auth/signup">Sign Up</a></li>
+					<% } else { %>
+						<% if(user.admin){%>
+							<li><a href="/profile/admins">Admin Page</a></li>
+						<%}%>
+							<li><a href="/profile">Profile</a></li>
+							<li>Hello, <%=user.firstname%>!</li>
+							<li><a href="/auth/logout">Logout</a></li>
+					<% } %>
+				</ul>
+			</div>
+		</nav>
+	</header>
+	<main>
+		<div class="container">
+			<% include partials/alerts %> 
+			<%- body %>
 		</div>
-	</nav>
-	<div class="container">
-		<% include partials/alerts %> 
-		<%- body %>
-	</div>
+	</main>
+	<footer class="page-footer">
+	 	<div class="container">
+                <div class="row">
+                    <div class="col l6 s12">
+                    	<h5 class="white-text">
+                    		Make It Special | Built with
+                        	<i class="material-icons">favorite</i> by <br>
+                        	<a href="#">Kelly Park</a>
+                       	</h5>
+                    </div>
+                <div class="col l4 offset-l2 s12">
+                    <ul>
+                        <li><a href="#">GitHub</a></li>
+                        <li><a href="#">Email</a></li>
+                    </ul>
+                </div>
+               </div>
+               </div>
+    </footer>
+
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 	<script>
 		document.addEventListener('DOMContentLoaded', function() {
