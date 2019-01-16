@@ -7,13 +7,32 @@
 		 		<li>Date: <%=friend.date%></li>
 		 		<li>Tags: 
 				 	<% friend.tags.forEach(function(t){ %>
-							<span class="tags"><a href="/tag/<%=t.id%>">#<%= t.content %></a></span>
+							<span class="tags">#<%= t.content %></span>
 					<% }); %>	
 				</li>
 		 	</ul>
 	</div>
+</div>
 
-	<div class="col s12">
+<div class="row">
+			<% results.forEach(function(t){ %>
+			<div class="col s12">
+					<h4><%=t.tag.content%></h4>
+						<% t.gifts.forEach(function(result) {%>
+						<div class="col s12 m4 l2">
+						  <div class="card customGift">
+					        	<div class="card-image">
+						         	<img src="<%=result.Images[0].url_570xN%>">
+									<a class="btn-floating halfway-fab waves-effect waves-light red" href="<%=result.url%>"><i class="material-icons">add</i></a>
+							   </div>
+							   <div class="card-content">
+						       		<h5><%=result.title %></h5>
+						        </div>
+						    </div>
+						    </div>
+						<% })%>
+					<hr>
+				</div>
+			<% }) %> 
 		
-	</div>
 </div>

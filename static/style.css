@@ -63,10 +63,19 @@ footer {
 	width: auto;
 }
 
+.customGift{
+	display: block;
+	max-width: 200px;
+}
+
 .tags{
 	border: 1px purple solid;
 	border-radius: 20px;
 	padding: 2px 5px;
+}
+
+.searchWrap{
+	border: 1px purple solid;
 }
 
 .tagDelete{

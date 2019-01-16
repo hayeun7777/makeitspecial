@@ -13,8 +13,7 @@ var urlToCall = process.env.ETSY_URL + '&keywords=' + req.params.content + '&inc
 			console.log(err);
 		} else{
 			var result = JSON.parse(body).results;
-			console.log(result);
-			res.render('tags/show', {result: result, tag: req.params.content})
+			res.render('tags/show', {results: result, tag: req.params.content})
 		}
 	})
 })
@@ -32,25 +31,6 @@ router.delete('/:id', function(req, res){
 			}
 		}).then(function(deletedAssociations){
 			res.redirect('/friend');
-		}).catch(function(err){
-			console.log(err);
-		})
-	})
-})
-
-
-//Delete only tags in the edit page
-router.delete('/edit/:id', function(req, res){
-	db.tag.destroy({
-		where: {id: req.params.id}
-	})
-	.then(function(deletedFriend){
-		db.friendTag.destroy({
-			where: {
-			tagId: req.params.id
-			}
-		}).then(function(deletedAssociations){
-			res.redirect('/friend/edit');
 		}).catch(function(err){
 			console.log(err);
 		})

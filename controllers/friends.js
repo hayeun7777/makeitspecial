@@ -2,6 +2,10 @@ var async = require('async');
 var express = require('express');
 var router = express.Router();
 var db = require('../models'); 
+var request = require('request');
+
+require('dotenv').config();
+
 var tags = [];
 
 //get all the list of friends
@@ -50,19 +54,23 @@ router.post('/', function(req, res){
 	})
 });
 
-//get all list of friends with tags
+
+//get items related to tag content on the friend/more page per friendId
 router.get('/:id', function(req, res){
 	db.friend.findOne({
-		where: {id: req.params.id},
-		include: [db.tag]
-	})
-	.then(function(friend){
-		res.render('friends/more', {friend: friend});
-	})
-	.catch(function(err){
-		console.log(err);
-	})
-})
+			where: {id: req.params.id},
+			include: [db.tag]
+		})
+		.then(function(friend){	
+			async.map(friend.tags, requestGifts, function(err, results) {
+			    res.render('friends/more', {friend: friend, results: results});
+			});
+		})
+		.catch(function(err){
+			console.log(err);
+		})
+});
+
 
 //edit friend profile 
 router.get('/edit/:id', function(req, res){
@@ -170,5 +178,16 @@ router.delete('/:id', function(req, res){
 	})
 })
 
+function requestGifts(tag, callback){
+	let urlToCall = process.env.ETSY_URL + "&keywords=" + tag.content + "&includes=Images" + "&limit=5";
+	request(urlToCall, function(err, response, body){
+		if(err){
+			console.log(err)
+		} else {
+			let result = JSON.parse(body).results;
+			callback(null, {tag: tag, gifts: result});
+		}
+	})
+}
 
 module.exports = router;
