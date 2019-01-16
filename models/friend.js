@@ -7,6 +7,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   friend.associate = function(models) {
     // associations can be defined here
+    models.friend.belongsToMany(models.tag, { through: 'friendTag', onDelete: 'cascade' });
   };
   return friend;
 };

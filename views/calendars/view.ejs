@@ -1,0 +1,32 @@
+<div class="monthly" id="mycalendar"></div>
+
+
+<script>
+    var friendDates = <%-JSON.stringify(friends)%>
+
+	dates = {"monthly": []};
+
+	friendDates.map(function(d, i){
+		dates["monthly"].push({"id": i,
+				"name": d.friendname+" : "+d.event,
+				"startdate": d.date,
+				"enddate": "",
+				"starttime": "",
+				"endtime": "",
+				"color": "#99CCCC",
+				"url": ""});
+		return dates;
+	})
+	console.log(dates)
+
+
+    $(window).load( function() {
+        $('#mycalendar').monthly({
+     	  mode: 'event',
+	  	  dataType: 'json',
+	  	  events: dates
+        });
+    });
+
+
+</script>

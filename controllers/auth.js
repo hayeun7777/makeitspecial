@@ -19,7 +19,7 @@ router.get('/signup', function(req, res){
 })
 
 //use relative path here
-router.post('/signup', function(req, res){
+router.post('/signup', function(req, res, next){
 	if(req.body.password != req.body.password_verify){
 		req.flash('error', 'Passwords must match');
 		res.render('/auth/signup', {previousData: req.body , alerts: req.flash() }); //absolute path here. where you want to redirect users to
@@ -31,8 +31,6 @@ router.post('/signup', function(req, res){
 		.spread(function(user, wasCreated){
 			//console.log('got to promise');
 			if(wasCreated){
-				console.log('was created');
-				req.flash('success', 'Yay! Good job! You signed up!');
 				passport.authenticate('local', {
 					successFlash: 'Welcome Home',
 					successRedirect: '/profile',

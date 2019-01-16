@@ -3,5 +3,30 @@
 		<h3>Hello there,</h3>
 		<h4>How would you like to make today more memorable?</h4>
 	</div>
+
+	<div class="carousel carousel-slider">
+    <a class="carousel-item" href="#one!"><img src="https://res.cloudinary.com/kellyp/image/upload/v1547593569/birthdaysurprise.jpg"></a>
+    <a class="carousel-item" href="#two!"><img src="https://res.cloudinary.com/kellyp/image/upload/v1547531934/gifting.jpg"></a>
+    <a class="carousel-item" href="#three!"><img src="https://res.cloudinary.com/kellyp/image/upload/v1547531930/newborn.jpg"></a>
+    <a class="carousel-item" href="#four!"><img src="https://res.cloudinary.com/kellyp/image/upload/v1547531938/mothersday.jpg"></a>
+  </div>
+
 </div>
 
+
+<script>
+$(document).ready(function(){
+   $('.carousel.carousel-slider').carousel({ 
+	    fullWidth: true
+	  });
+  	autoplay();
+
+  	function autoplay(){
+	$('.carousel.carousel-slider').carousel('next');
+	setTimeout(autoplay, 3000);
+	}
+
+  });
+
+
+</script>

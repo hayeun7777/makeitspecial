@@ -1,0 +1,18 @@
+<div class="row">
+	<title>Customized gift list</title>
+	<div class="col 12">
+		<div class="row">
+			<h4>Gifts related to <%=tag%></h4>
+				<% result.forEach(function(result) {%>
+					<div class="col m4 s12 giftList">
+						<a href="<%=result.url%>"><h5><%=result.title %></h5></a>
+						<h6>Price:<%=result.price%><%=result.currency_code%></h6>
+						<h6>Category:<%=result.category_path%></h6>
+						<img src="<%=result.Images[0].url_570xN%>">
+					</div>
+				<% })%>
+
+		</div>
+	</div>
+</div>
+

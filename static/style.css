@@ -33,9 +33,9 @@ footer {
 	background-color: #E1B8E8 !important;
 }
 
-.container{
-	width: 100%;
+.row{
 	margin: 0 auto;
+	padding: 1% 5%;
 }
 
 .profile{
@@ -47,4 +47,30 @@ footer {
 	background-color: #ECE7F0;
 	font-family: 'Patrick Hand', cursive;
 	padding: 20px;
+}
+
+.fixed-height{
+	min-height: 60px;
+}
+
+.giftList{
+	text-align: center;
+	margin: 0 auto;
+}
+
+.giftList img{
+	height: 200px;
+	width: auto;
+}
+
+.tags{
+	border: 1px purple solid;
+	border-radius: 20px;
+	padding: 2px 5px;
+}
+
+.tagDelete{
+	background-color: transparent;
+	margin: 0 auto;
+	border: none;
 }

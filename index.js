@@ -2,29 +2,14 @@
 require('dotenv').config();
 
 // Requires
+var parser = require('body-parser');
 var flash = require('connect-flash');
 var express = require('express');
 var layouts = require('express-ejs-layouts');
 var parser = require('body-parser');
 var passport = require('./config/passportConfig');
 var session = require('express-session');
-// var request = require('request');
-// var rp = require('request-promise');
-// var cheerio = require('cheerio');
-
-// request('https://www.uncommongoods.com/product/', function(error, response, body){
-// 	var $ = cheerio.load(body);
-// 	var gifts = $('.info-window-content').map(function(index, element){
-// 		return {
-// 			item: $(element).find('h1').text(),
-// 			price: $(element).find('p').attr('span'),
-// 			photo: $(element).find('img').attr('src'),
-// 			description: $(element).find('p').text()
-// 		};
-// }).get();
-
-// });
-
+var methodOverride = require('method-override');
 
 // Declare express app
 var app = express();
@@ -36,14 +21,16 @@ var db = require('./models');
 app.set('view engine', 'ejs');
 
 //use Middleware
+app.use(methodOverride('_method'));
 app.use(layouts);
+app.use(parser.urlencoded({ extended: false}));
 app.use('/', express.static('static'));
 app.use(parser.urlencoded({ extended:false }));
 //set up the session before firing the flash. flash depends on express-session
 app.use(session({
 	secret: process.env.SESSION_SECRET,
 	resave: false,
-	saveUnintialized: true
+	saveUninitialized: true
 }));
 app.use(flash());
 app.use(passport.initialize());
@@ -70,6 +57,9 @@ app.get('/profile', function(req, res){
 app.use('/auth', require('./controllers/auth.js'));
 app.use('/profile', require('./controllers/profiles'));
 app.use('/product', require('./controllers/products'));
+app.use('/friend', require('./controllers/friends'));
+app.use('/tag', require('./controllers/tags'));
+app.use('/calendar', require('./controllers/calendars'));
 
 // Listen on a port
 app.listen(3000);

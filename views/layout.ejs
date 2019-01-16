@@ -3,9 +3,14 @@
 <head>
 	<title>Make It Special</title>
 	<link rel="stylesheet" type="text/css" href="/style.css">
+	<link rel="stylesheet" type="text/css" href="/monthly.css">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Exo+2|Patrick+Hand" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	 <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
+  crossorigin="anonymous"></script>
+  	<script type="text/javascript" src="/monthly.js"></script>
 </head>
 <body>
 	<header>
@@ -14,7 +19,6 @@
 				<a href="/" class="brand-logo"><i class="material-icons">card_giftcard</i> Make It Special </a>
 				<ul class="right">
 					<% if(!user) { %>
-						<li><a href="/friend">People</a></li>
 						<li><a href="/product">Gift</a></li>
 						<li><a href="/auth/login">Log in</a></li>
 						<li><a href="/auth/signup">Sign Up</a></li>
@@ -22,6 +26,9 @@
 						<% if(user.admin){%>
 							<li><a href="/profile/admins">Admin Page</a></li>
 						<%}%>
+							<li><a href="/friend">People</a></li>
+							<li><a href="/calendar">Calendar</a></li>
+							<li><a href="/product">Gift</a></li>
 							<li><a href="/profile">Profile</a></li>
 							<li>Hello, <%=user.firstname%>!</li>
 							<li><a href="/auth/logout">Logout</a></li>
@@ -31,10 +38,8 @@
 		</nav>
 	</header>
 	<main>
-		<div class="container">
 			<% include partials/alerts %> 
 			<%- body %>
-		</div>
 	</main>
 	<footer class="page-footer">
 	 	<div class="container">
@@ -55,7 +60,6 @@
                </div>
                </div>
     </footer>
-
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 	<script>
 		document.addEventListener('DOMContentLoaded', function() {
@@ -65,6 +69,13 @@
 		        minDate: new Date('01/01/1920'),
 		        maxDate: new Date(), 
 		        yearRange: [1920,2019]
+				});
+		      var elemT = document.querySelectorAll('.datepickerT');
+		      var instanceT = M.Datepicker.init(elemT, {
+		        autoClose: false,
+		        minDate: new Date(),
+		        maxDate: new Date('12/31/2030'), 
+		        yearRange: [2019,2030]
 				});
 		  })
 	</script>

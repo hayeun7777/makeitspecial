@@ -14,9 +14,27 @@ router.get('/', function(req, res) {
                     item: $(element)
                         .find('h4 span', (itemprop = 'name'))
                         .text(),
-                    price: $(element)
-                        .find('link', (itemprop = 'price'))
+                    priceCurrency: $(element)
+                        .find('link[itemprop=priceCurrency]')
                         .attr('content'),
+                    getPrice: function(){
+                        var price = $(element)
+                        .find('link[itemprop=price]')
+                        .attr('content');
+
+                        if(price){
+                            return price;
+                        }
+                        else {
+                            var lowPrice = $(element)
+                                .find('link[itemprop=lowPrice]')
+                                .attr('content');
+                            var highPrice = $(element)
+                                .find('link[itemprop=highPrice]')
+                                .attr('content');
+                            return lowPrice+"-"+ highPrice;
+                        }
+                    },
                     photo: $(element)
                         .find('article img')
                         .attr('src'),

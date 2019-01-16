@@ -1,10 +1,17 @@
-<h1>Gift Ideas for your Friend1</h1>
-
-<% gifts.forEach(function(gift){ %>
-<div class="">
-    <h3><%=gift.item%></h3>
-    <img src="http://www.uncommongoods.com<%=gift.photo%>" />
-    <h4>price: $<%=gift.price%></h4>
-    <a href="http://www.uncommongoods.com<%=gift.link%>"><h4>for more details</h4></a>
+<div class="row">
+	<h1>Gift Ideas</h1>
+	<div class="col 12">
+		<div class="row">
+			<% gifts.forEach(function(gift){ %>
+				<div class="col m4 s12 giftList">
+					<div class="fixed-height">
+				  	  <h5><b><%=gift.item%></b></h5>
+				  	 </div>
+				  	 <a href="http://www.uncommongoods.com<%=gift.link%>"><img src="http://www.uncommongoods.com<%=gift.photo%>"></a>
+				    <h5>$<%=gift.getPrice()%> <%=gift.priceCurrency%></h5>
+				    <a href="http://www.uncommongoods.com<%=gift.link%>"><h5>Click for more details</h5></a>
+				</div>
+			<% }) %>
+		</div>
+	</div>
 </div>
-<% }) %>

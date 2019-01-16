@@ -1,0 +1,38 @@
+<title> List of Friends </title>
+
+<div class="row">
+	<div class="col s6">
+		<h3>People & Events:</h3>
+		<% friends.forEach(function(friend){%>
+		 	<ul>
+		 		<li>Your friends: <a href="/friend/<%=friend.id%>"><%=friend.friendname%></a></li>
+		 		<li>Event: <%=friend.event%></li>
+		 		<li>Date: <%=friend.date%></li>
+		 		<li>Tags: 
+				 	<% friend.tags.forEach(function(t){ %>
+						<form method="POST" action="/tag/<%=t.id%>/?_method=DELETE"">
+						<span class="tags"><a href="/tag/<%=t.content%>">#<%= t.content %></a><input type="submit" class="tagDelete" value="✖️">
+								</form>
+							</span>
+					<% }); %>	
+				</li>
+		 	</ul>
+		 	<form method="POST" action="/friend/<%=friend.id%>/?_method=DELETE">
+		 		<input type="submit" value="Delete">
+		 	</form>
+		<%})%>
+	</div>
+
+	<div class="col s6">
+		<h3>Add More Here!</h3>
+		<div>
+			<form method="POST" action="/friend">
+				<input type="text" name="friendname" placeholder="Put your new friend's name here">
+				<input type="text" name="event" placeholder="What event is this for? (i.e. birthday, anniversary">
+				<input class="datepickerT" type="text" name="date" placeholder="Put date of the event!">
+				<input type="text" name="tags" placeholder="Favorite things your friend likes! (comma-separated)">
+				<input type="submit" value="Let's Add!">
+			</form>
+		</div>
+	</div>
+</div>

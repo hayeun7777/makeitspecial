@@ -1,0 +1,20 @@
+<div class="row">
+<title>More about your friend</title>
+	<div class="col s6">
+		<h3>More About <%=friend.friendname%>:</h3>
+			<ul>
+		 		<li>Event: <%=friend.event%></li>
+		 		<li>Date: <%=friend.date%></li>
+		 		<li>Tags: 
+				 	<% friend.tags.forEach(function(t){ %>
+						<form method="POST" action="/tag/<%=t.id%>/?_method=DELETE"">
+						<span class="tags"><a href="/tag/<%=t.id%>">#<%= t.content %></a><input type="submit" class="tagDelete" value="✖️">
+								</form>
+							</span>
+					<% }); %>	
+				</li>
+		 	</ul>
+		 	<input type="submit" value="Edit">
+	</div>
+
+</div>
