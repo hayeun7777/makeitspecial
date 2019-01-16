@@ -80,27 +80,37 @@ router.get('/edit/:id', function(req, res){
 //add tags on the edit page HELP
 router.post('/edit/:id', function(req, res){
 	if(req.body.tags){
-    tags = req.body.tags.split(",");
+    	tags = req.body.tags.split(",");
 	}
 	if(tags.length>0){
-    	async.forEach(tags, function(t, done){
-		db.tag.findOrCreate({
-  			where:{ content: t.trim() }  
-			})
-			.spread(function(newTag, wasCreated){
-  				friend.addTag(newTag)
-  			.then(function(){
-    			done(); //call done when finished
-  			}).catch(done);
-			})
-			.catch(done);
-		}, function(friend){
-			res.render('friends/edit', {friend : friend});
+		db.friend.findOne({
+			where: {id: req.params.id},
+			include: [db.tag]
+		})
+		.then(function(friend){
+	    	async.forEach(tags, function(t, done){
+				db.tag.findOrCreate({
+	  				where:{ content: t.trim() }  
+				})
+				.spread(function(newTag, wasCreated){
+	  				friend.addTag(newTag)
+		  			.then(function(){
+		    			done(); //call done when finished
+		  			}).catch(done);
+				})
+				.catch(done);
+			}, function(){
+				console.log('redirecting');
+				res.redirect('/friend/edit/' + req.params.id);
+			});
 		});
+	}
+	else {
+		res.redirect('/friend/edit/' + req.params.id);
 	}
 });
 
-//update friend profile and redirect to friend/more
+//update friend profile and redirect to '/friend' -> WORKING
 router.put('/:id', function(req, res){
 	db.friend.update({
 		friendname: req.body.friendname,
@@ -116,6 +126,18 @@ router.put('/:id', function(req, res){
 	})
 })
 
+//Delete association from the edit page
+router.delete('/edit/:id', function(req, res){
+	db.friendTag.destroy({
+		where: {
+			friendId: req.body.friendId,
+			tagId: req.params.id
+		}
+	})
+	.then(function(deletedAssociations){
+		res.redirect('/friend/edit/' + req.body.friendId );
+	})
+})
 
 //Delete association
 router.delete('/', function(req, res){
@@ -126,11 +148,11 @@ router.delete('/', function(req, res){
 		}
 	})
 	.then(function(deletedAssociations){
-		res.redirect('/friend' );
+		res.redirect('/friend');
 	})
 })
 
-//Delete the friends
+//Delete a friend (including tags)
 router.delete('/:id', function(req, res){
 	db.friend.destroy({
 		where: {id: req.params.id}

@@ -74,3 +74,10 @@ footer {
 	margin: 0 auto;
 	border: none;
 }
+
+/*not working yet*/
+@media (max-width: 600px) {
+  .navbar-material .nav-wrapper {
+    height: 100px;
+  }
+}

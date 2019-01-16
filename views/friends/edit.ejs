@@ -13,16 +13,18 @@
 		</div>
 
 		<div class="col s6">
-			<h3>Edit Tags:</h3>
+			<h3>Add/Remove Tags:</h3>
 				<ul>
 					<form method="POST" action="/friend/edit/<%=friend.id%>">
 						<input type="text" name="tags" placeholder="Add new tags (separated by comma)">
 						<input type="submit" value="Add">
 					</form>
+				</ul>
+				<ul>
 					<% friend.tags.forEach(function(t){ %>
-						<form method="POST" action="/tag/<%=t.id%>/?_method=DELETE"">
-							<span class="tags"><a href="/tag/<%=t.id%>">#<%= t.content %></a>
-							<input type="submit" class="tagDelete" value="✖️"></span>
+						<form method="POST" action="/friend/edit/<%=t.id%>/?_method=DELETE"">
+							<input type="hidden" name="friendId" value="<%=friend.id%>">
+							<span class="tags">#<%= t.content %><input type="submit" class="tagDelete" value="✖️"></span>
 						</form>
 					<% }); %>
 				</ul>	
