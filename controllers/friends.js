@@ -2,6 +2,7 @@ var async = require('async');
 var express = require('express');
 var router = express.Router();
 var db = require('../models'); 
+var tags = [];
 
 //get all the list of friends
 router.get('/', function(req, res){
@@ -18,7 +19,6 @@ router.get('/', function(req, res){
 
 //post new friends and tags
 router.post('/', function(req, res){
-	var tags = [];
 	if(req.body.tags){
     tags = req.body.tags.split(",");
 	}
@@ -57,10 +57,61 @@ router.get('/:id', function(req, res){
 		include: [db.tag]
 	})
 	.then(function(friend){
-		console.log("Hello world", friend.tags);
 		res.render('friends/more', {friend: friend});
 	})
 	.catch(function(err){
+		console.log(err);
+	})
+})
+
+//edit friend profile 
+router.get('/edit/:id', function(req, res){
+	db.friend.findOne({
+		where: {id: req.params.id},
+		include: [db.tag]
+	})
+	.then(function(friend){
+		res.render('friends/edit', {friend : friend});
+	}).catch(function(err){
+		console.log(err);
+	})
+})
+
+//add tags on the edit page HELP
+router.post('/edit/:id', function(req, res){
+	if(req.body.tags){
+    tags = req.body.tags.split(",");
+	}
+	if(tags.length>0){
+    	async.forEach(tags, function(t, done){
+		db.tag.findOrCreate({
+  			where:{ content: t.trim() }  
+			})
+			.spread(function(newTag, wasCreated){
+  				friend.addTag(newTag)
+  			.then(function(){
+    			done(); //call done when finished
+  			}).catch(done);
+			})
+			.catch(done);
+		}, function(friend){
+			res.render('friends/edit', {friend : friend});
+		});
+	}
+});
+
+//update friend profile and redirect to friend/more
+router.put('/:id', function(req, res){
+	db.friend.update({
+		friendname: req.body.friendname,
+		date: req.body.date,
+		event: req.body.event
+	}, {
+		returning:true,
+		where: {id: req.params.id}
+	}).then(function([rows, [updatedFriend]]){
+		res.redirect('/friend')
+	}).catch(function(err){
 		console.log(err);
 	})
 })

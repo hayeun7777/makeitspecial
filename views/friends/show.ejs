@@ -10,13 +10,13 @@
 		 		<li>Date: <%=friend.date%></li>
 		 		<li>Tags: 
 				 	<% friend.tags.forEach(function(t){ %>
-						<form method="POST" action="/tag/<%=t.id%>/?_method=DELETE"">
-						<span class="tags"><a href="/tag/<%=t.content%>">#<%= t.content %></a><input type="submit" class="tagDelete" value="✖️">
-								</form>
-							</span>
+						<span class="tags"><a href="/tag/<%=t.content%>">#<%= t.content %></a></span>
 					<% }); %>	
 				</li>
 		 	</ul>
+		 	<form method="GET" action="/friend/edit/<%=friend.id%>">
+			 	<input type="submit" value="Edit">
+			</form>
 		 	<form method="POST" action="/friend/<%=friend.id%>/?_method=DELETE">
 		 		<input type="submit" value="Delete">
 		 	</form>
