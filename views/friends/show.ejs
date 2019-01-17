@@ -18,6 +18,7 @@
 			 	<input type="submit" value="Edit">
 			</form>
 		 	<form method="POST" action="/friend/<%=friend.id%>/?_method=DELETE">
+		 		<input type="hidden" name="userId" value="<%=user.id%>">
 		 		<input type="submit" value="Delete">
 		 	</form>
 		<%})%>
@@ -31,6 +32,7 @@
 				<input type="text" name="event" placeholder="What event is this for? (i.e. birthday, anniversary">
 				<input class="datepickerT" type="text" name="date" placeholder="Put date of the event!">
 				<input type="text" name="tags" placeholder="Favorite things your friend likes! (comma-separated)">
+				<input type="hidden" name="userId" value="<%=user.id%>">
 				<input type="submit" value="Let's Add!">
 			</form>
 		</div>

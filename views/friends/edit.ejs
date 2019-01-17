@@ -24,6 +24,7 @@
 					<% friend.tags.forEach(function(t){ %>
 						<form method="POST" action="/friend/edit/<%=t.id%>/?_method=DELETE"">
 							<input type="hidden" name="friendId" value="<%=friend.id%>">
+							<input type="hidden" name="userId" value="<%=user.id%>">
 							<span class="tags">#<%= t.content %><input type="submit" class="tagDelete" value="✖️"></span>
 						</form>
 					<% }); %>

@@ -5,7 +5,10 @@ var db = require('../models');
 
 
 router.get('/', function(req, res){
-	db.friend.findAll()
+	db.friend.findAll({
+		where: { userId: req.user.id },
+		include: [db.user]
+	})
 	.then(function(friends){
 		res.render('calendars/view', { friends : friends});
 	})

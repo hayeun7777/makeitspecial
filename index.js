@@ -11,6 +11,7 @@ var parser = require('body-parser');
 var passport = require('./config/passportConfig');
 var session = require('express-session');
 var methodOverride = require('method-override');
+var loggedIn = require('./middleware/loggedIn');
 
 // Declare express app
 var app = express();
@@ -51,9 +52,10 @@ app.use(function(req, res, next){//next is the callback to indicate we are ready
 });
 
 // Declare routes
-app.get('/', function(req, res){
+app.get('/', loggedIn, function(req, res){
 	db.friend.findAll({
-		include: [db.tag]
+		where: { userId: req.user.id },
+		include: [db.tag, db.user]
 	})
 	.then(function(friends){
 		res.render('home', { friends: friends});
@@ -71,9 +73,9 @@ app.get('/profile', function(req, res){
 app.use('/auth', require('./controllers/auth.js'));
 app.use('/profile', require('./controllers/profiles'));
 app.use('/product', require('./controllers/products'));
-app.use('/friend', require('./controllers/friends'));
-app.use('/tag', require('./controllers/tags'));
-app.use('/calendar', require('./controllers/calendars'));
+app.use('/friend', loggedIn, require('./controllers/friends'));
+app.use('/tag', loggedIn, require('./controllers/tags'));
+app.use('/calendar', loggedIn, require('./controllers/calendars'));
 
 // Listen on a port
 app.listen(3000);

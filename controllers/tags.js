@@ -22,11 +22,13 @@ var urlToCall = process.env.ETSY_URL + '&keywords=' + req.params.content + '&inc
 //Delete tags when the entire friend list is removed
 router.delete('/:id', function(req, res){
 	db.tag.destroy({
-		where: {id: req.params.id}
+		where: {id: req.params.id,
+		userId: req.user.id}
 	})
 	.then(function(deletedFriend){
 		db.friendTag.destroy({
 			where: {
+			friendId: req.body.friendId,
 			tagId: req.params.id
 			}
 		}).then(function(deletedAssociations){

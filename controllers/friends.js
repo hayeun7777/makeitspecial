@@ -11,10 +11,11 @@ var tags = [];
 //get all the list of friends
 router.get('/', function(req, res){
 	db.friend.findAll({
-		include: [db.tag]
+		where: { userId: req.user.id },
+		include: [db.tag, db.user]
 	})
 	.then(function(friends){
-		res.render('friends/show', { friends: friends});
+		res.render('friends/show', { friends: friends });
 	})
 	.catch(function(err){
 		console.log(err);
@@ -29,7 +30,8 @@ router.post('/', function(req, res){
 		db.friend.create({
 			friendname: req.body.friendname,
 			date: req.body.date,
-			event: req.body.event
+			event: req.body.event,
+			userId: req.body.userId
 		})
 		.then(function(friend){
 			if(tags.length>0){
@@ -107,7 +109,6 @@ router.post('/edit/:id', function(req, res){
 				})
 				.catch(done);
 			}, function(){
-				console.log('redirecting');
 				res.redirect('/friend/edit/' + req.params.id);
 			});
 		});
@@ -133,7 +134,7 @@ router.put('/:id', function(req, res){
 	})
 })
 
-//Delete association from the edit page
+//Delete association when deleting tags in the edit page
 router.delete('/edit/:id', function(req, res){
 	db.friendTag.destroy({
 		where: {
@@ -146,12 +147,12 @@ router.delete('/edit/:id', function(req, res){
 	})
 })
 
-//Delete association
+//Delete association when deleting the entire friend list
 router.delete('/', function(req, res){
 	db.friendTag.destroy({
 		where: {
-			friendId: req.body.friendId,
-			tagId: req.body.tagId
+			friendId: req.body,friendId,
+			tagId: req.params.id
 		}
 	})
 	.then(function(deletedAssociations){
@@ -162,7 +163,8 @@ router.delete('/', function(req, res){
 //Delete a friend (including tags)
 router.delete('/:id', function(req, res){
 	db.friend.destroy({
-		where: {id: req.params.id}
+		where: {id: req.params.id,
+		userId: req.user.id}
 	})
 	.then(function(deletedFriend){
 		db.friendTag.destroy({
