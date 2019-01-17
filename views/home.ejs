@@ -12,7 +12,18 @@
   </div>
 
 </div>
-
+	
+<div>
+	<ul>
+		<% friends.sort(function(a, b){
+			return a.date > b.date;
+		}).forEach(function(friend){%>
+		<li>
+			<h4><%= friend.friendname %>'s <%=friend.event%> is coming <%=moment(friend.date).fromNow()%></h4>
+		</li>
+		<%})%>
+	</ul>
+</div>
 
 <script>
 $(document).ready(function(){
@@ -25,7 +36,6 @@ $(document).ready(function(){
 	$('.carousel.carousel-slider').carousel('next');
 	setTimeout(autoplay, 3000);
 	}
-
   });
 
 

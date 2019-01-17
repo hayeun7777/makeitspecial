@@ -6,6 +6,7 @@ var parser = require('body-parser');
 var flash = require('connect-flash');
 var express = require('express');
 var layouts = require('express-ejs-layouts');
+var moment = require('moment');
 var parser = require('body-parser');
 var passport = require('./config/passportConfig');
 var session = require('express-session');
@@ -36,6 +37,11 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use(function(req, res, next) {
+  res.locals.moment = moment;
+  next();
+});
+
 //custom middleware - write data to locals
 //this allows the entire webpage to have access to same data pool without repeating {alerts: req.flash();} for every GET, POST routes
 app.use(function(req, res, next){//next is the callback to indicate we are ready to move to the next middleware
@@ -46,7 +52,15 @@ app.use(function(req, res, next){//next is the callback to indicate we are ready
 
 // Declare routes
 app.get('/', function(req, res){
-  res.render('home');
+	db.friend.findAll({
+		include: [db.tag]
+	})
+	.then(function(friends){
+		res.render('home', { friends: friends});
+	})
+	.catch(function(err){
+		console.log(err);
+	})
 });
 
 app.get('/profile', function(req, res){

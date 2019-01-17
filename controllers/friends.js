@@ -54,7 +54,6 @@ router.post('/', function(req, res){
 	})
 });
 
-
 //get items related to tag content on the friend/more page per friendId
 router.get('/:id', function(req, res){
 	db.friend.findOne({
