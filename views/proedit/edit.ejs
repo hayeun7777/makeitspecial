@@ -1,0 +1,23 @@
+<div class="row">
+	<h1><%= user.firstname %>'s Profile!</h1>
+		<form method="POST" action="/profile/<%=user.id%>/?_method=PUT">
+			<h4>Edit Your Info</h4>
+				<div class="col s6">
+					<div>
+						<p><strong>Display Name:</strong><%=user.username%></p>
+						<p><strong>User Status:</strong><%=user.admin ? 'Admin':'User'%></p>
+						<p><strong>Full Name:</strong><input type="text" name="firstname" value="<%=user.firstname%>"><input type="text" name="lastname" value="<%=user.lastname%>"></p>
+						<p><strong>Email:</strong><input type="text" name="email" value="<%=user.email%>"></p>
+						<p><strong>Date of Birth:</strong><input class="datepicker" type="test" name="dob" value="<%=user.dob%>"></p>
+					</div>
+				</div>
+			<div>
+				<p>Image url: <input class="profile" type="url" name="image" value="<%=user.image%>"></p>
+			</div>
+			<div class="col s6">
+				<p>Bio:<input type="text" name="bio" value="<%=user.bio%>"></p>
+				<input type="submit" value="Done Editing">
+			</div>
+		</form>
+</div>
+
