@@ -4,14 +4,16 @@
 	<title>Make It Special</title>
 	<link rel="stylesheet" type="text/css" href="/style.css">
 	<link rel="stylesheet" type="text/css" href="/monthly.css">
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.5/slick.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 	<link href="https://fonts.googleapis.com/css?family=Exo+2|Patrick+Hand" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-	 <script src="https://code.jquery.com/jquery-2.2.4.min.js"
+	<script src="https://code.jquery.com/jquery-2.2.4.min.js"
   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
   crossorigin="anonymous"></script>
   	<script type="text/javascript" src="/monthly.js"></script>
   	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.18.1/moment.min.js"></script>
+  	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.5/slick.min.js"></script>
 </head>
 <body>
 	<header>
@@ -27,11 +29,11 @@
 						<% if(user.admin){%>
 							<li><a href="/profile/admins">Admin Page</a></li>
 						<%}%>
+							<li>Hello, <%=user.firstname%>!</li>
 							<li><a href="/friend">People</a></li>
 							<li><a href="/calendar">Calendar</a></li>
 							<li><a href="/product">Gift</a></li>
 							<li><a href="/profile">Profile</a></li>
-							<li>Hello, <%=user.firstname%>!</li>
 							<li><a href="/auth/logout">Logout</a></li>
 					<% } %>
 				</ul>
@@ -48,14 +50,13 @@
                     <div class="col l6 s12">
                     	<h5 class="white-text">
                     		Make It Special | Built with
-                        	<i class="material-icons">favorite</i> by <br>
-                        	<a href="#">Kelly Park</a>
+                        	<i class="material-icons">favorite</i> by Kelly Park
                        	</h5>
                     </div>
                 <div class="col l4 offset-l2 s12">
                     <ul>
-                        <li><a href="https://github.com/hayeun7777">GitHub</a></li>
-                        <li><a href="#">Email</a></li>
+                        <li><a href="https://github.com/hayeun7777/makeitspecial">GitHub</a></li>
+                        <li>Source Credits: <br>UncommonGoods & Etsy</li>
                     </ul>
                 </div>
                </div>

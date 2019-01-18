@@ -1,28 +1,27 @@
 <div class="row">
-	<div class="s12 m4 l8 homediv">
+	<div class="col m6 s12 homediv">
 		<h3>Hello there,</h3>
 		<h4>How would you like to make today more memorable?</h4>
+
+		<div class="carousel carousel-slider">
+		    <a class="carousel-item" href="#one!"><img src="https://res.cloudinary.com/kellyp/image/upload/v1547593569/birthdaysurprise.jpg"></a>
+		    <a class="carousel-item" href="#two!"><img src="https://res.cloudinary.com/kellyp/image/upload/v1547531934/gifting.jpg"></a>
+		    <a class="carousel-item" href="#three!"><img src="https://res.cloudinary.com/kellyp/image/upload/v1547531930/newborn.jpg"></a>
+		    <a class="carousel-item" href="#four!"><img src="https://res.cloudinary.com/kellyp/image/upload/v1547531938/mothersday.jpg"></a>
+		  </div>
 	</div>
 
-	<div class="carousel carousel-slider">
-    <a class="carousel-item" href="#one!"><img src="https://res.cloudinary.com/kellyp/image/upload/v1547593569/birthdaysurprise.jpg"></a>
-    <a class="carousel-item" href="#two!"><img src="https://res.cloudinary.com/kellyp/image/upload/v1547531934/gifting.jpg"></a>
-    <a class="carousel-item" href="#three!"><img src="https://res.cloudinary.com/kellyp/image/upload/v1547531930/newborn.jpg"></a>
-    <a class="carousel-item" href="#four!"><img src="https://res.cloudinary.com/kellyp/image/upload/v1547531938/mothersday.jpg"></a>
-  </div>
-
-</div>
-	
-<div>
-	<ul>
-		<% friends.sort(function(a, b){
-			return a.date > b.date;
-		}).forEach(function(friend){%>
-		<li>
-			<h4><%= friend.friendname %>'s <%=friend.event%> is coming <%=moment(friend.date).fromNow()%></h4>
-		</li>
-		<%})%>
-	</ul>
+	<div class="col m6 s12 eventList">
+		<ul class="listWrap">
+			<% friends.sort(function(a, b){
+					return a.date > b.date;
+			}).forEach(function(friend){%>
+				<li>
+					<h5><%= friend.friendname %>'s <a href="/friend/<%=friend.id%>"><%=friend.event%></a> is coming <%=moment(friend.date).fromNow()%></h5>
+				</li>
+			<%})%>
+		</ul>
+	</div>
 </div>
 
 <script>
@@ -36,7 +35,5 @@ $(document).ready(function(){
 	$('.carousel.carousel-slider').carousel('next');
 	setTimeout(autoplay, 3000);
 	}
-  });
-
 
 </script>

@@ -11,7 +11,7 @@ main{
 }
 
 nav{
-	background-color: #E1B8E8 !important;
+	background-color: #7FCDCD !important;
 	min-height: 50px;
 	padding: 10px 0 0 15px;
 }
@@ -26,11 +26,10 @@ nav a{
 
 nav a:hover {
 	color: #FFE2A7;
-
 }
 
 footer {
-	background-color: #E1B8E8 !important;
+	background-color: #BAACBD !important;
 }
 
 .row{
@@ -44,9 +43,20 @@ footer {
 }
 
 .homediv{
-	background-color: #ECE7F0;
+	background-color: #E7ECEF;
 	font-family: 'Patrick Hand', cursive;
 	padding: 20px;
+}
+
+.eventList{
+	background-color: #C9C5CB;
+	font-family: 'Patrick Hand', cursive;
+	margin: 0 auto;
+}
+
+.listWrap{
+	border: 1px purple solid;
+	border-radius: 10px;
 }
 
 .fixed-height{
@@ -66,6 +76,7 @@ footer {
 .customGift{
 	display: block;
 	max-width: 200px;
+	max-height: 300px;
 }
 
 .tags{
@@ -84,9 +95,64 @@ footer {
 	border: none;
 }
 
-/*not working yet*/
-@media (max-width: 600px) {
-  .navbar-material .nav-wrapper {
-    height: 100px;
-  }
+/*
+for the product slider for tag lists*/
+.heroSlider-fixed{
+	position: relative;
+}
+
+.slick-dots {
+  text-align: center;
+  margin: 0 0 10px 0;
+  padding: 0;
+}
+
+.slick-dots li {
+  display: inline-block;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+
+.slick-dots li.slick-active button {
+  background-color: black;
+}
+
+.slick-dots li button {
+  font: 0/0 a;
+  text-shadow: none;
+  color: transparent;
+  background-color: #999;
+  border: none;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+}
+
+.slick-dots li :hover {
+  background-color: black;
+}
+
+.prev {
+  color: #999;
+  position: absolute;
+  top: 38%;
+  left: 30%;
+  font-size: 1.5em;
+}
+
+.prev :hover {
+  cursor: pointer;
+  color: black;
+}
+
+.next {
+  color: #999;
+  position: absolute;
+  top: 38%;
+  left: 60%;
+  font-size: 1.5em;
+}
+.next :hover {
+  cursor: pointer;
+  color: black;
 }
