@@ -32,6 +32,14 @@ footer {
 	background-color: #BAACBD !important;
 }
 
+.btn, .btn-large, .btn-small{
+	background-color: #fb178a !important;
+}
+
+.textcenter{
+	text-align: center;
+}
+
 .row{
 	margin: 0 auto;
 	padding: 1% 5%;
@@ -46,17 +54,56 @@ footer {
 	background-color: #E7ECEF;
 	font-family: 'Patrick Hand', cursive;
 	padding: 20px;
+	border-radius: 10px;
+}
+
+.calendar-size{
+	margin: 0 auto;
+	width: 700px;
+	height: 700px;
 }
 
 .eventList{
+	text-align: center;
 	background-color: #C9C5CB;
 	font-family: 'Patrick Hand', cursive;
 	margin: 0 auto;
+	border-radius: 10px;
 }
 
 .listWrap{
-	border: 1px purple solid;
+	color: white;
+	margin: 0 auto;
+	background-color: #78687f;
 	border-radius: 10px;
+	width: 80%;
+}
+
+.wrapper{
+	margin: 0 auto;
+	position: relative;
+	width: 80%;
+	height: 420px;
+}
+
+.imagewrap img{
+	position: absolute;
+	margin: 0 auto;
+	min-height: 220px;
+	max-height: 250px;
+	overflow: hidden;
+}
+
+.wraprest{
+	position: absolute;
+	margin: 0 auto;
+	width: 100%;
+}
+
+.card-content{
+	position: absolute;
+	top: 80%;
+	width: 90%;
 }
 
 .fixed-height{
@@ -71,6 +118,13 @@ footer {
 .giftList img{
 	height: 200px;
 	width: auto;
+}
+
+.tagList {
+	width: 100%;
+	margin: 0 auto;
+	position: absolute;
+	top: 30%;
 }
 
 .customGift{
@@ -133,6 +187,7 @@ for the product slider for tag lists*/
 }
 
 .prev {
+  width: 100px;
   color: #999;
   position: absolute;
   top: 38%;
@@ -146,6 +201,7 @@ for the product slider for tag lists*/
 }
 
 .next {
+  width: 100px;
   color: #999;
   position: absolute;
   top: 38%;

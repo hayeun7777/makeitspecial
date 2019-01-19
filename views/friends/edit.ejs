@@ -8,28 +8,34 @@
 						<li>Event:<input type="text" name="event" value="<%=friend.event%>"></li>
 						<li>Date:<input type="text" class="datepickerT" name="date" value="<%=friend.date%>"></li>
 					</ul>
-					<input type="submit" value="Done Editing!">
+					<button class="btn waves-effect waves-light" type="submit" name="action">Done Editing
+	    			<i class="material-icons right">done_all</i>
+	 				</button>
 				</form>
 		</div>
 
 		<div class="col s6">
 			<h3>Add/Remove Tags:</h3>
-				<ul>
-					<form method="POST" action="/friend/edit/<%=friend.id%>">
-						<input type="text" name="tags" placeholder="Add new tags (separated by comma)">
-						<input type="submit" value="Add">
-					</form>
-				</ul>
-				<ul>
-					<% friend.tags.forEach(function(t){ %>
-						<form method="POST" action="/friend/edit/<%=t.id%>/?_method=DELETE"">
-							<input type="hidden" name="friendId" value="<%=friend.id%>">
-							<input type="hidden" name="userId" value="<%=user.id%>">
-							<span class="tags">#<%= t.content %><input type="submit" class="tagDelete" value="✖️"></span>
+					<ul>
+						<form method="POST" action="/friend/edit/<%=friend.id%>">
+							<div class="col s10">
+								<input type="text" name="tags" placeholder="Add new tags (separated by comma)">
+							</div>
+							<div class="col s2">
+								<input type="submit" value="Add">
+							</div>
 						</form>
-					<% }); %>
-				</ul>	
+					</ul>
+				<div class="tagList">
+					<ul>
+						<% friend.tags.forEach(function(t){ %>
+							<form method="POST" action="/friend/edit/<%=t.id%>/?_method=DELETE"">
+								<input type="hidden" name="friendId" value="<%=friend.id%>">
+								<input type="hidden" name="userId" value="<%=user.id%>">
+								<span class="tags">#<%= t.content %><input type="submit" class="tagDelete" value="✖️"></span>
+							</form>
+						<% }); %>
+					</ul>
+				</div>	
 		</div>
 	</div>
-
-</div>

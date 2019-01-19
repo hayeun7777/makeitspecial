@@ -180,7 +180,7 @@ router.delete('/:id', function(req, res){
 })
 
 function requestGifts(tag, callback){
-	let urlToCall = process.env.ETSY_URL + "&keywords=" + tag.content + "&includes=Images" + "&limit=12";
+	let urlToCall = process.env.ETSY_URL + "&keywords=" + tag.content + "&includes=Images" + "&limit=16";
 	request(urlToCall, function(err, response, body){
 		if(err){
 			console.log(err)

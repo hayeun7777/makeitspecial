@@ -1,20 +1,20 @@
 <div class="row">
 <title>More about your friend</title>
-	<div class="col s6">
+	<div class="col s12">
 		<h3>More About <%=friend.friendname%>:</h3>
 			<ul>
-		 		<li>Event: <%=friend.event%></li>
-		 		<li>Date: <%=friend.date%></li>
-		 		<li>Tags: 
+		 		<li><b>Event:</b> <%=friend.event%></li>
+		 		<li><b>Date:</b> <%=friend.date%></li>
+		 		<li><b>Tags: </b>
 				 	<% friend.tags.forEach(function(t){ %>
 							<span class="tags">#<%= t.content %></span>
 					<% }); %>	
 				</li>
 		 	</ul>
-	</div>
-	<div class="col s6">
 		<form method="GET" action="/friend">
-			<input type="submit" value="Back to friend list">
+			<button class="btn waves-effect waves-light" type="submit" name="action">Back to Friend List
+			<i class="material-icons right">arrow_back</i>
+			</button>
 		</form>
 	</div>
 </div>
@@ -23,21 +23,24 @@
 <div class="row">
 	<div class="col s12 heroSlider-fixed">
 		<% results.forEach(function(t){ %>
-		
 			<h4><%=t.tag.content%></h4>
 			<div class="slider responsive <%=t.tag.content%>">
 				<% t.gifts.forEach(function(result) {%>
 					<div class="col s12 m4 l2">
-					  <div class="card customGift">
-				        <div class="card-image">
-				         	<img src="<%=result.Images[0].url_570xN%>">
-							<a class="btn-floating halfway-fab waves-effect waves-light red" href="<%=result.url%>"><i class="material-icons">add</i></a>
-					    </div>
-					   	<div class="card-content">
-					       	<h5><%=result.title.slice(0,30)+"..."%></h5>
-					    </div>
-					 </div>
-				   </div>
+						<div class="card wrapper">
+						  	<div class="cardwrap">
+						        <div class="card-image imagewrap">
+						         	<img src="<%=result.Images[0].url_570xN%>">
+							    </div>
+						   		<div class="wraprest">
+						   			<a class="btn-floating halfway-fab waves-effect waves-light red" href="<%=result.url%>"><i class="material-icons">add</i></a>
+						  	 		<div class="card-content">
+						     	  		<h5><%=result.title.slice(0,30)+"..."%></h5>
+						     	  	</div>
+					     	 	</div>
+						    </div>
+					   </div>
+					</div>
 				<% })%>
 				</div>
 				<div class="prev <%=t.tag.content%>">
@@ -56,7 +59,7 @@
 	  dots: true,
 		prevArrow: $('.<%=t.tag.content%>'),
 		nextArrow: $('.<%=t.tag.content%>'),
-	  infinite: false,
+	  infinite: true,
 	  speed: 300,
 	  slidesToShow: 4,
 	  slidesToScroll: 4,

@@ -5,18 +5,20 @@
 				<img src="<%= user.image %>" class="profile">
 			</div>
 			<div>
-				<p><strong>Display Name:</strong><%=user.username%></p>
-				<p><strong>User Status:</strong><%=user.admin ? 'Admin':'User'%></p>
-				<p><strong>Full Name:</strong><%=user.firstname%> <%=user.lastname%></p>
-				<p><strong>Email:</strong><%=user.email%></p>
-				<p><strong>Date of Birth:</strong><%=user.dob%></p>
+				<p><b>Display Name:</b> <%=user.username%></p>
+				<p><b>User Status:</b> <%=user.admin ? 'Admin':'User'%></p>
+				<p><b>Full Name:</b> <%=user.firstname%> <%=user.lastname%></p>
+				<p><b>Email:</b> <%=user.email%></p>
+				<p><b>Date of Birth:</b> <%=user.dob%></p>
 			</div>
 		</div>
 		<div class="col s6">
-			<h4><%= user.firstname %>'s Bio</h4>
-			<p>Note:<%= user.bio %></p>
+			<h4><b><%= user.firstname %>'s Bio</b></h4>
+			<p><%= user.bio %></p>
 		</div>
 		<form method="GET" action="/profile/edit/<%=user.id%>">
-			<input type="submit" value="Edit Profile">
+			<button class="btn waves-effect waves-light" type="submit" name="action">Edit Profile
+    		<i class="material-icons right">edit</i>
+ 			</button>
 		</form>
 </div>
