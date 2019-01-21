@@ -86,7 +86,7 @@ module.exports = (sequelize, DataTypes) => {
 
 2) Creating a product slider per tag for customize gift lists per friend's tag 
 
-![product slider](https://res.cloudinary.com/kellyp/image/upload/v1548031962/tagslider.png)
+![product slider](https://res.cloudinary.com/kellyp/image/upload/v1548032362/tagslider.png)
 
 In order to create a product slider per tag, I had to figure out how to iterate jQuery script. It was very challenging to reach to an idea of putting the entire script tag under forEach function and I was very thrilled to see this working.  
 
