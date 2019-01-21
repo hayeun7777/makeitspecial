@@ -4,31 +4,33 @@
 	<div class="col s6">
 		<h3>People & Events:</h3>
 		<% friends.forEach(function(friend){%>
-		 	<ul>
-		 		<li><b>Your friends:</b> <a href="/friend/<%=friend.id%>"><%=friend.friendname%></a></li>
-		 		<li><b>Event:</b> <%=friend.event%></li>
-		 		<li><b>Date:</b> <%=friend.date%></li>
-		 		<li><b>Tags:</b> 
-				 	<% friend.tags.forEach(function(t){ %>
-						<span class="tags"><a href="/tag/<%=t.content%>">#<%= t.content %></a></span>
-					<% }); %>	
-				</li>
-		 	</ul>
-		 	<div class="col s3">
-			 	<form method="GET" action="/friend/edit/<%=friend.id%>">
-					<button class="btn waves-effect waves-light" type="submit" name="action">Edit
-		    		<i class="material-icons right">edit</i>
-		 			</button>
-				</form>
+			<div class="col s12">
+			 	<ul>
+			 		<li><b>Your friends:</b> <a href="/friend/<%=friend.id%>"><%=friend.friendname%></a></li>
+			 		<li><b>Event:</b> <%=friend.event%></li>
+			 		<li><b>Date:</b> <%=friend.date%></li>
+			 		<li><b>Tags:</b> 
+					 	<% friend.tags.forEach(function(t){ %>
+							<span class="tags"><a href="/tag/<%=t.content%>">#<%= t.content %></a></span>
+						<% }); %>	
+					</li>
+			 	</ul>
+			 	<div class="col s3">
+				 	<form method="GET" action="/friend/edit/<%=friend.id%>">
+						<button class="btn waves-effect waves-light" type="submit" name="action">Edit
+			    		<i class="material-icons right">edit</i>
+			 			</button>
+					</form>
+				</div>
+				<div class="col s3">
+				 	<form method="POST" action="/friend/<%=friend.id%>/?_method=DELETE">
+				 		<input type="hidden" name="userId" value="<%=user.id%>">
+				 		<button class="btn waves-effect waves-light" type="submit" name="action">Delete
+		    			<i class="material-icons right">delete</i>
+		 				</button>
+				 	</form>
+				 </div>
 			</div>
-			<div class="col s3">
-			 	<form method="POST" action="/friend/<%=friend.id%>/?_method=DELETE">
-			 		<input type="hidden" name="userId" value="<%=user.id%>">
-			 		<button class="btn waves-effect waves-light" type="submit" name="action">Delete
-	    			<i class="material-icons right">delete</i>
-	 				</button>
-			 	</form>
-			 </div>
 		<%})%>
 	</div>
 
@@ -41,7 +43,7 @@
 				<input class="datepickerT" type="text" name="date" placeholder="Put date of the event!">
 				<input type="text" name="tags" placeholder="Favorite things your friend likes! (comma-separated)">
 				<input type="hidden" name="userId" value="<%=user.id%>">
-				<button class="btn waves-effect waves-light" type="submit" name="action">Add More
+				<button class="btn waves-effect waves-light" type="submit" name="action">Add Your Loved Ones! 
 	    		<i class="material-icons right">add</i>
 	 			</button>
 			</form>

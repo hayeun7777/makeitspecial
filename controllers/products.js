@@ -3,10 +3,9 @@ var cheerio = require('cheerio');
 var router = express.Router();
 var db = require('../models'); 
 var request = require('request');
-var scraper = require('../scraper')
 
 router.get('/', function(req, res) {
-    request('https://www.uncommongoods.com/gifts/birthday-gifts/birthday-gifts', function(error, response, body) {
+    request('https://www.uncommongoods.com/gifts/' + req.query.giftSearch + '?view=all', function(error, response, body) {
         var $ = cheerio.load(body);
         var gifts = $('.product')
             .map(function(index, element) {
@@ -44,7 +43,6 @@ router.get('/', function(req, res) {
                 };
             })
             .get();
-        console.log(gifts);
         res.render('products/show', { gifts: gifts });
     });
 });

@@ -1,26 +1,30 @@
 <div class="row">
-	<div class="col m6 s12 homediv">
-		<h3>Hello there,</h3>
-		<h4>How would you like to make today more memorable?</h4>
-
-		<div class="carousel carousel-slider">
-		    <a class="carousel-item" href="#one!"><img src="https://res.cloudinary.com/kellyp/image/upload/v1547593569/birthdaysurprise.jpg"></a>
-		    <a class="carousel-item" href="#two!"><img src="https://res.cloudinary.com/kellyp/image/upload/v1547531934/gifting.jpg"></a>
-		    <a class="carousel-item" href="#three!"><img src="https://res.cloudinary.com/kellyp/image/upload/v1547531930/newborn.jpg"></a>
-		    <a class="carousel-item" href="#four!"><img src="https://res.cloudinary.com/kellyp/image/upload/v1547531938/mothersday.jpg"></a>
-		  </div>
+	<div class="col m6 s12">
+		<div class="homediv">
+			<h3>Hello <%=user.firstname%>,</h3>
+			<h4>How would you like to make today more memorable?</h4>
+		</div>
+		<div class="eventList">
+			<ul class="listWrap">
+				<% friends.sort(function(a, b){
+					return a.date > b.date;
+				}).forEach(function(friend){%>
+					<li>
+						<h5> &nbsp 🎁 <%= friend.friendname %>'s <a href="/friend/<%=friend.id%>"><%=friend.event%></a> is coming <%=moment(friend.date).fromNow()%></h5>
+					</li>
+				<%})%>
+			</ul>
+		</div>
 	</div>
 
-	<div class="col m6 s12 eventList">
-		<ul class="listWrap">
-			<% friends.sort(function(a, b){
-					return a.date > b.date;
-			}).forEach(function(friend){%>
-				<li>
-					<h5><%= friend.friendname %>'s <a href="/friend/<%=friend.id%>"><%=friend.event%></a> is coming <%=moment(friend.date).fromNow()%></h5>
-				</li>
-			<%})%>
-		</ul>
+
+	<div class="col m6 s12 ">
+		<div class="carousel carousel-slider">
+		    <a class="carousel-item" href="#one!"><img src="https://res.cloudinary.com/kellyp/image/upload/v1547931851/celebration.jpg"></a>
+		    <a class="carousel-item" href="#two!"><img src="https://res.cloudinary.com/kellyp/image/upload/v1547931208/wedding.jpg"></a>
+		    <a class="carousel-item" href="#three!"><img src="https://res.cloudinary.com/kellyp/image/upload/v1547931414/valentines.jpg"></a>
+		    <a class="carousel-item" href="#four!"><img src="https://res.cloudinary.com/kellyp/image/upload/v1547931210/babyshower.jpg"></a>
+		</div>
 	</div>
 </div>
 
@@ -30,7 +34,7 @@ $(document).ready(function(){
 	    fullWidth: true
 	  });
   	autoplay();
-  	 });
+});
 
   	function autoplay(){
 	$('.carousel.carousel-slider').carousel('next');

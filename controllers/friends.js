@@ -86,7 +86,7 @@ router.get('/edit/:id', function(req, res){
 	})
 })
 
-//add tags on the edit page HELP
+//add tags on the edit page
 router.post('/edit/:id', function(req, res){
 	if(req.body.tags){
     	tags = req.body.tags.split(",");

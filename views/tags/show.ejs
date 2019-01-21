@@ -1,24 +1,32 @@
 <div class="row">
 	<title>Customized gift list</title>
 	<div class="col 12">
-		<div class="row">
-			<h4>Gifts related to <%=tag%></h4>
-				<% results.forEach(function(result) {%>
-					<div class="col m4 s12 giftList">
-						<div class="card customGift">
-					        <div class="card-image">
-					        	<img src="<%=result.Images[0].url_570xN%>">
+			<h4>Gifts related to #<%=tag%></h4>
+					<form method="GET" action="/friend">
+						<button class="btn waves-effect waves-light" type="submit" name="action">Back to Friend List
+						<i class="material-icons right">arrow_back</i>
+						</button>
+					</form>
+					<div class="col 12">
+						<% results.forEach(function(result) {%>
+							<div class="col s12 m4 l2">
+								<div class="card wrapper">
+								  	<div class="cardwrap">
+										<div class="card customGift">
+									        <div class="card-image">
+									        	<img src="<%=result.Images[0].url_570xN%>">
+											</div>
+											<div class="card-content">
+												<a href="<%=result.url%>"><h6><%=result.title.slice(0,30)+"..." %></h6></a>
+												<h6>Price:<%=result.price%><%=result.currency_code%></h6>
+												<h6>Category:<%=result.category_path%></h6>
+											</div>
+										</div>
+									</div>
+								</div>
 							</div>
-							<div class="card-content">
-								<a href="<%=result.url%>"><h6><%=result.title.slice(0,30)+"..." %></h6></a>
-								<h6>Price:<%=result.price%><%=result.currency_code%></h6>
-								<h6>Category:<%=result.category_path%></h6>
-							</div>
-						</div>
+						<% })%>
 					</div>
-				<% })%>
-
-		</div>
 	</div>
 </div>
 

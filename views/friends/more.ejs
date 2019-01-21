@@ -1,4 +1,4 @@
-<div class="row">
+<div class="row editFont">
 <title>More about your friend</title>
 	<div class="col s12">
 		<h3>More About <%=friend.friendname%>:</h3>
@@ -57,8 +57,8 @@
 <script>
 	$('.<%=t.tag.content%>').slick({
 	  dots: true,
-		prevArrow: $('.<%=t.tag.content%>'),
-		nextArrow: $('.<%=t.tag.content%>'),
+		prevArrow: $('.<%=t.tag.content%>.prev'),
+		nextArrow: $('.<%=t.tag.content%>.next'),
 	  infinite: true,
 	  speed: 300,
 	  slidesToShow: 4,

@@ -1,5 +1,5 @@
 body{
-	font-family: 'Exo 2', sans-serif;
+	font-family: 'Sarala', sans-serif;
 	display: flex;
     min-height: 100vh;
     flex-direction: column;
@@ -11,25 +11,33 @@ main{
 }
 
 nav{
-	background-color: #7FCDCD !important;
+	background-color: #FFFEF4 !important;
 	min-height: 50px;
 	padding: 10px 0 0 15px;
 }
 
+nav ul a{
+	font-size: 20px !important;
+}
 
 nav a{
 	text-decoration: none;
+	color: #be7e7e !important;
 	font-size: 28px;
 	color: white;
-	font-family: 'Exo 2', sans-serif;
+	font-family: 'Rochester', cursive;
 }
 
 nav a:hover {
-	color: #FFE2A7;
+	color: #f994bb !important;
 }
 
 footer {
 	background-color: #BAACBD !important;
+}
+
+.footerFonts{
+	font-size: 18px;
 }
 
 .btn, .btn-large, .btn-small{
@@ -52,7 +60,7 @@ footer {
 
 .homediv{
 	background-color: #E7ECEF;
-	font-family: 'Patrick Hand', cursive;
+	font-family: 'Gabriela', serif;
 	padding: 20px;
 	border-radius: 10px;
 }
@@ -64,19 +72,12 @@ footer {
 }
 
 .eventList{
-	text-align: center;
-	background-color: #C9C5CB;
-	font-family: 'Patrick Hand', cursive;
-	margin: 0 auto;
+	color: gray;
+	text-align: left;
+	border: 1px #FBD58A solid;
+	font-family: 'Gabriela', serif;
+	margin: 10px auto;
 	border-radius: 10px;
-}
-
-.listWrap{
-	color: white;
-	margin: 0 auto;
-	background-color: #78687f;
-	border-radius: 10px;
-	width: 80%;
 }
 
 .wrapper{
@@ -110,11 +111,6 @@ footer {
 	min-height: 60px;
 }
 
-.giftList{
-	text-align: center;
-	margin: 0 auto;
-}
-
 .giftList img{
 	height: 200px;
 	width: auto;
@@ -126,7 +122,6 @@ footer {
 	position: absolute;
 	top: 30%;
 }
-
 .customGift{
 	display: block;
 	max-width: 200px;
@@ -134,6 +129,8 @@ footer {
 }
 
 .tags{
+	display: inline-block;
+	margin: 3px auto;
 	border: 1px purple solid;
 	border-radius: 20px;
 	padding: 2px 5px;
@@ -190,9 +187,11 @@ for the product slider for tag lists*/
   width: 100px;
   color: #999;
   position: absolute;
+  display: inline-block !important;
   top: 38%;
   left: 30%;
   font-size: 1.5em;
+  margin-top: 50px;
 }
 
 .prev :hover {
@@ -204,9 +203,11 @@ for the product slider for tag lists*/
   width: 100px;
   color: #999;
   position: absolute;
+  display: inline-block !important;
   top: 38%;
   left: 60%;
   font-size: 1.5em;
+  margin-top: 50px;
 }
 .next :hover {
   cursor: pointer;

@@ -6,7 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="/monthly.css">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.5/slick.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
-	<link href="https://fonts.googleapis.com/css?family=Exo+2|Patrick+Hand" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Gabriela|Rochester|Sarala" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 	<script src="https://code.jquery.com/jquery-2.2.4.min.js"
   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
@@ -30,9 +30,9 @@
 							<li><a href="/profile/admins">Admin Page</a></li>
 						<%}%>
 							<li>Hello, <%=user.firstname%>!</li>
-							<li><a href="/friend">People</a></li>
+							<li><a href="/friend">Friends&Family</a></li>
 							<li><a href="/calendar">Calendar</a></li>
-							<li><a href="/product">Gift</a></li>
+							<li><a href="/product">Unique Gifts</a></li>
 							<li><a href="/profile">Profile</a></li>
 							<li><a href="/auth/logout">Logout</a></li>
 					<% } %>
@@ -54,7 +54,7 @@
                        	</h5>
                     </div>
                 <div class="col l4 offset-l2 s12">
-                    <ul>
+                    <ul class="footerFonts">
                         <li><a href="https://github.com/hayeun7777/makeitspecial">GitHub</a></li>
                         <li>Source Credits: <br>UncommonGoods & Etsy</li>
                     </ul>
@@ -63,6 +63,7 @@
                </div>
     </footer>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
 	<script>
 		document.addEventListener('DOMContentLoaded', function() {
 		      var elems = document.querySelectorAll('.datepicker');
