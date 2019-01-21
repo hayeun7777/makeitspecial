@@ -101,7 +101,7 @@ footer {
 	width: 100%;
 }
 
-.card-content{
+.contentWrap{
 	position: absolute;
 	top: 80%;
 	width: 90%;

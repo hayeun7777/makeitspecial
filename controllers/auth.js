@@ -64,7 +64,7 @@ router.post('/signup', function(req, res, next){
 });
 
 router.get('/logout', function(req,res){
-	req.logout(); //logs me out of the session
+	req.logout(); //logs user out of the session
 	req.flash('success', 'Successful Logout! Come back again!');
 	res.redirect('/');
 });
