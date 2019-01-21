@@ -14,7 +14,15 @@ This app also contains a section to explore unique gift items for more generic e
 
 ## Wire framing & planning 
 I wanted to create an app that almost acts like a personal scheduler once logged in. 
-<!-- <wireframe image> -->
+
+Homepage
+![Homepage wireframe](https://res.cloudinary.com/kellyp/image/upload/v1548034910/wireframe1.png)
+
+Fam&Friend list/add page
+![Family&Friend wireframe](https://res.cloudinary.com/kellyp/image/upload/v1548034910/wireframe2.png)
+
+Friend detail page
+![Friend Detail Page wireframe](https://res.cloudinary.com/kellyp/image/upload/v1548034910/wireframe3.png)
 
 To begin with, I brainstormed models to create and relationships associated with them. 
 
