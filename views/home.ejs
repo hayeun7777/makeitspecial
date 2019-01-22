@@ -10,7 +10,7 @@
 					return a.date > b.date;
 				}).forEach(function(friend){%>
 					<li>
-						<h5> &nbsp 🎁 <%= friend.friendname %>'s <a href="/friend/<%=friend.id%>"><%=friend.event%></a> is coming <%=moment(friend.date).fromNow()%></h5>
+						<h5> &nbsp 🎁 <span class="textcap"><%=friend.friendname%></span>'s <a href="/friend/<%=friend.id%>"><%=friend.event%></a> is coming <%=moment(friend.date).fromNow()%></h5>
 					</li>
 				<%})%>
 			</ul>

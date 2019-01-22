@@ -72,7 +72,6 @@ router.get('/:id', function(req, res){
 		})
 });
 
-
 //edit friend profile 
 router.get('/edit/:id', function(req, res){
 	db.friend.findOne({

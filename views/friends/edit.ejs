@@ -1,6 +1,6 @@
 <div class="row">
 <title>Edit Friends</title>
-	<div class="col s6">
+	<div class="col s6 textcap">
 		<h3>Edit <%=friend.friendname%>'s Profile:</h3>
 			<form method="POST" action="/friend/<%= friend.id %>/?_method=PUT">
 				<ul>
@@ -14,7 +14,7 @@
 			</form>
 	</div>
 
-	<div class="col s6">
+	<div class="col s6 textcap">
 		<h3>Add/Remove Tags:</h3>
 			<ul>
 				<form method="POST" action="/friend/edit/<%=friend.id%>">
